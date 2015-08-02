@@ -25,8 +25,10 @@ public class Lista_objetos {
         this.unodo=this.pnodo;
     }else{
            NodoL nnodo =new NodoL(obj, null, this.pnodo);
-           this.pnodo.setanterior(nnodo);
-           this.pnodo=nnodo;
+         this.unodo.siguiente=nnodo;
+         nnodo.anterior=unodo;
+         unodo=nnodo;
+         
                    
     }
     }
@@ -79,10 +81,10 @@ public class Lista_objetos {
     }
     
     public void imprimirlista(){
-    NodoL aux= this.unodo;
+    NodoL aux= this.pnodo;
     while(aux!=null){
     System.out.println(aux.getinfo().nombre);
-    aux=aux.getanterior();
+    aux=aux.getsiguiente();
     }
     }
     public boolean buscar(Objeto_juego obj){

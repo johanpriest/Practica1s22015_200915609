@@ -15,7 +15,7 @@ public class Practica1_edd {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-     creacion_objetos ventana=new creacion_objetos();
+     Objetos ventana=new Objetos();
      ventana.setVisible(true);
     }
     
