@@ -15,7 +15,8 @@ public class Practica1_edd {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+     creacion_objetos ventana=new creacion_objetos();
+     ventana.setVisible(true);
     }
     
 }
