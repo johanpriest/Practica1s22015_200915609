@@ -281,7 +281,21 @@ Lista_objetos lista=new Lista_objetos();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-lista.imprimirlista();        // TODO add your handling code here:
+lista.imprimirlista();    
+Matriz m=new Matriz();
+Objeto_juego obj=new Objeto_juego("vacio1", "vacio");
+for(int i=1;i<=5;i++){
+    for(int j=1;j<=3;j++){
+    m.insertar(obj, i, j);
+    Matriz.Nodo buscarFilaAnterior = m.irAlNodo(i, j);
+        String dato = buscarFilaAnterior.getdato();
+        System.out.println(dato+" pos x: "+i+" pos y:"+j);
+    }
+}
+
+pantalla_juego pantalla=new pantalla_juego();
+pantalla.setVisible(true);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed

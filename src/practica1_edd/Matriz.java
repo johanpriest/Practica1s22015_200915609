@@ -39,6 +39,11 @@ public class Matriz {
             info.setNombre(d.getNombre());
             info.seturl(d.geturl());
         }
+           /**obtenemos el dato del nodo especifico*/
+        public String getdato(){
+         return info.nombre;
+        
+        }
           /**Devuelve puntero a siguiente nodo en la Columna (siguiente fila)*/
         public Nodo getSiguienteCol(){return this.siguienteCol;};
         /**Devuelve puntero a siguiente nodo en la Fila (siguiente columna)*/
@@ -275,7 +280,7 @@ public class Matriz {
 
     return actual;
     }
-    /**Manda a la Mi**da a un nodo
+    /**borra a un nodo
      @param x Coordenada en x
      @param y Coordenada en y
      @return True si fue satisfactoria la eliminacion*/
