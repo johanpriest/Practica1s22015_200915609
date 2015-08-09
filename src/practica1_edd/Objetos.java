@@ -7,6 +7,7 @@ package practica1_edd;
 
 import java.awt.Image;
 import java.net.URL;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 
@@ -20,6 +21,7 @@ public class Objetos extends javax.swing.JFrame {
      * Creates new form Objetos
      */
     public Objetos() {
+        this.lista = new Lista_objetos();
         initComponents();
 String path = "/imagenes/pared.jpg";  
 URL url = this.getClass().getResource(path);  
@@ -59,7 +61,22 @@ Icon icono = new ImageIcon(icon_castillo.getImage().getScaledInstance(jLabel1.ge
 jLabel10.setIcon(icono);
 this.repaint();
 
+
+
     }
+
+    /**
+     *
+     */
+public int contador_pared=0;
+public int contador_bloque=0;
+public int contador_goomba=0;
+public int contador_koopa=0;
+public int contador_ficha=0;
+public int contador_mario_objeto=0;
+public int contador_castillo_objeto=0;
+
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -81,7 +98,6 @@ this.repaint();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
@@ -90,6 +106,25 @@ this.repaint();
         jButton8 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
+        mapa = new javax.swing.JButton();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel18 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        pared_contador = new javax.swing.JTextField();
+        bloque_contador = new javax.swing.JTextField();
+        goomba_contador = new javax.swing.JTextField();
+        ficha_contador = new javax.swing.JTextField();
+        koopa_contador = new javax.swing.JTextField();
+        mario_contador = new javax.swing.JTextField();
+        castillo_contador = new javax.swing.JTextField();
+        pila = new javax.swing.JRadioButton();
+        jLabel20 = new javax.swing.JLabel();
+        cola = new javax.swing.JRadioButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -123,13 +158,6 @@ this.repaint();
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("MOSTRAR OBJETOS");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
             }
         });
 
@@ -177,6 +205,67 @@ this.repaint();
 
         jLabel11.setText("NOMBRE PERSONAJE:");
 
+        mapa.setText("IR A CREACION DE MaPA");
+        mapa.setEnabled(false);
+        mapa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mapaActionPerformed(evt);
+            }
+        });
+
+        jLabel12.setText("CONTADOR DE OBJETOS CREADOS");
+
+        jLabel13.setText("PARED:");
+
+        jLabel14.setText("BLOQUE:");
+
+        jLabel15.setText("GOOMBA:");
+
+        jLabel16.setText("FICHA:");
+
+        jLabel17.setText("KOOPA:");
+
+        jLabel18.setText("MARIO:");
+
+        jLabel19.setText("CASTILLO:");
+
+        pared_contador.setText("0");
+        pared_contador.setEnabled(false);
+
+        bloque_contador.setText("0");
+        bloque_contador.setEnabled(false);
+
+        goomba_contador.setText("0");
+        goomba_contador.setEnabled(false);
+
+        ficha_contador.setText("0");
+        ficha_contador.setEnabled(false);
+
+        koopa_contador.setText("0");
+        koopa_contador.setEnabled(false);
+
+        mario_contador.setText("0");
+        mario_contador.setEnabled(false);
+
+        castillo_contador.setText("0");
+        castillo_contador.setEnabled(false);
+
+        pila.setText("PILA");
+        pila.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pilaActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("SELECCION DE SUSTRACCION DE ELEMENTOS");
+
+        cola.setText("COLA");
+        cola.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                colaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -199,36 +288,59 @@ this.repaint();
                             .addComponent(jButton4)
                             .addComponent(jButton5)
                             .addComponent(jButton1))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel4)
-                            .addGap(40, 40, 40))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                            .addComponent(jLabel2)
-                            .addGap(194, 194, 194)))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(194, 194, 194))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton8))
                             .addGroup(layout.createSequentialGroup()
+                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(34, 34, 34)
+                                .addComponent(jButton6))
+                            .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel11))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jButton7)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton7))))
+                        .addGap(73, 73, 73)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(mapa)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel12)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel13)
+                                    .addComponent(jLabel14)
+                                    .addComponent(jLabel15)
+                                    .addComponent(jLabel16)
+                                    .addComponent(jLabel17)
+                                    .addComponent(jLabel18)
+                                    .addComponent(jLabel19))
                                 .addGap(34, 34, 34)
-                                .addComponent(jButton6)
-                                .addGap(97, 97, 97)
-                                .addComponent(jButton2)))
-                        .addGap(178, 178, 178))))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(castillo_contador, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(mario_contador, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(koopa_contador, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(ficha_contador, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(goomba_contador, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(bloque_contador, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(pared_contador, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel20)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(57, 57, 57)
+                                .addComponent(cola)
+                                .addGap(31, 31, 31)
+                                .addComponent(pila)))
+                        .addGap(93, 93, 93))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,49 +351,195 @@ this.repaint();
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton6))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3)
-                    .addComponent(jButton7))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4))
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton5)))
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton8)))
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jButton1)
+                            .addComponent(jButton6)
+                            .addComponent(jLabel20)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(9, 9, 9)
+                        .addComponent(mapa)))
+                .addGap(1, 1, 1)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel11))
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel12)
+                        .addGap(23, 23, 23)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel13)
+                                    .addComponent(pared_contador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel14)
+                                    .addComponent(bloque_contador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(12, 12, 12)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel15)
+                                    .addComponent(goomba_contador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel16)
+                                    .addComponent(ficha_contador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel17))
+                            .addComponent(koopa_contador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel18)
+                            .addComponent(mario_contador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel19)
+                            .addComponent(castillo_contador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(82, 82, 82)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton7)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton3))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton4)))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(cola)
+                                    .addComponent(pila))
+                                .addGap(173, 173, 173)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton8)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jButton5))))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-Lista_objetos lista=new Lista_objetos();
+
+    /**
+     *
+     */
+    public static Lista_objetos lista;
+
+    /**
+     *
+     */
+    public static  ArrayList<Integer> list=new ArrayList<>();
+        ;
+  
+    public static ArrayList li(){
+ 
+    return list;
+    }
+    
+   
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Objeto_juego obj=new Objeto_juego("pared", "/imagenes/pared.jpg");
         lista.insertarAlInicio(obj);
+        contador_pared++;
+        pared_contador.setText(Integer.toString(contador_pared));
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-lista.imprimirlista();    
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+ Objeto_juego obj=new Objeto_juego("bloque", "/imagenes/bloque.jpg");
+        lista.insertarAlInicio(obj);
+        contador_bloque++;
+        bloque_contador.setText(Integer.toString(contador_bloque));
+        
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+Objeto_juego obj=new Objeto_juego("goomba", "/imagenes/goomba.jpg");
+        lista.insertarAlInicio(obj);
+        contador_goomba++;
+            goomba_contador.setText(Integer.toString(contador_goomba));
+        
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+ Objeto_juego obj=new Objeto_juego("koopa", "/imagenes/koopa.png");
+        lista.insertarAlInicio(obj);
+        contador_koopa++;
+            koopa_contador.setText(Integer.toString(contador_koopa));
+        
+    }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+      Objeto_juego obj=new Objeto_juego("ficha", "/imagenes/ficha.png");
+        lista.insertarAlInicio(obj);
+        contador_ficha++;
+            ficha_contador.setText(Integer.toString(contador_ficha));
+        
+    }//GEN-LAST:event_jButton6ActionPerformed
+int contador_mario=1;
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+       
+      if(jTextField1.getText().length()==0){
+       System.out.println("PORFAVOR ELIGA NOMBRE AL PERSONAJE");
+        }else{
+               if(contador_mario==1){
+                        String nombre=jTextField1.getText();
+                         Objeto_juego obj=new Objeto_juego(nombre, "/imagenes/mario.png");
+                        lista.insertarAlInicio(obj);
+                    contador_mario--;
+                    contador_mario_objeto++;
+                     mario_contador.setText(Integer.toString(contador_mario_objeto));
+        
+                    }else{
+                     System.out.println("SOLO PUEDE EXISTIR UN HEROE POR EL JUEGO");
+                        } 
+       }
+    }//GEN-LAST:event_jButton7ActionPerformed
+int contador_castillo=1;
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        if(contador_castillo==1){
+           Objeto_juego obj=new Objeto_juego("castillo", "/imagenes/castillo.png");
+        lista.insertarAlInicio(obj);
+       contador_castillo--;
+       contador_castillo_objeto++;
+           castillo_contador.setText(Integer.toString(contador_castillo_objeto));
+        
+       }else{
+       System.out.println("SOLO PUEDE EXISTIR UN CASTILLO POR EL JUEGO");
+       }
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    
+ 
+    private void mapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapaActionPerformed
+//lista.imprimirlista();
+         list.add(Integer.parseInt(pared_contador.getText()));
+         list.add(Integer.parseInt(bloque_contador.getText()));
+         list.add(Integer.parseInt(goomba_contador.getText()));
+         list.add(Integer.parseInt(koopa_contador.getText()));
+         list.add(Integer.parseInt(ficha_contador.getText()));
+         list.add(Integer.parseInt(mario_contador.getText()));
+         list.add(Integer.parseInt(castillo_contador.getText()));
 Matriz m=new Matriz();
 Objeto_juego obj=new Objeto_juego("vacio1", "vacio");
 for(int i=1;i<=5;i++){
@@ -295,55 +553,32 @@ for(int i=1;i<=5;i++){
 
 pantalla_juego pantalla=new pantalla_juego();
 pantalla.setVisible(true);
-
-    }//GEN-LAST:event_jButton2ActionPerformed
-
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
- Objeto_juego obj=new Objeto_juego("bloque", "/imagenes/bloque.jpg");
-        lista.insertarAlInicio(obj);
-    }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-Objeto_juego obj=new Objeto_juego("goomba", "/imagenes/goomba.jpg");
-        lista.insertarAlInicio(obj);      
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
- Objeto_juego obj=new Objeto_juego("koopa", "/imagenes/koopa.png");
-        lista.insertarAlInicio(obj);
-    }//GEN-LAST:event_jButton5ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-      Objeto_juego obj=new Objeto_juego("ficha", "/imagenes/ficha.png");
-        lista.insertarAlInicio(obj);
-    }//GEN-LAST:event_jButton6ActionPerformed
-int contador_mario=1;
-    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       
-      if(jTextField1.getText().length()==0){
-       System.out.println("PORFAVOR ELIGA NOMBRE AL PERSONAJE");
-        }else{
-               if(contador_mario==1){
-                        String nombre=jTextField1.getText();
-                         Objeto_juego obj=new Objeto_juego(nombre, "/imagenes/mario.png");
-                        lista.insertarAlInicio(obj);
-                    contador_mario--;
-                    }else{
-                     System.out.println("SOLO PUEDE EXISTIR UN HEROE POR EL JUEGO");
-                        } 
-       }
-    }//GEN-LAST:event_jButton7ActionPerformed
-int contador_castillo=1;
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
-        if(contador_castillo==1){
-           Objeto_juego obj=new Objeto_juego("castillo", "/imagenes/castillo.png");
-        lista.insertarAlInicio(obj);
-       contador_castillo--;
-       
+        
+    }//GEN-LAST:event_mapaActionPerformed
+public static boolean tipo_sustraccion_pila;
+public static boolean tipo_sustraccion_cola;
+    private void pilaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pilaActionPerformed
+       if(cola.isEnabled()==true){
+       cola.setSelected(false);
+        mapa.setEnabled(true);
+        tipo_sustraccion_pila=true;
        }else{
-       System.out.println("SOLO PUEDE EXISTIR UN CASTILLO POR EL JUEGO");
+      pila.setSelected(true);
+  
        }
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_pilaActionPerformed
+
+    private void colaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_colaActionPerformed
+     
+     if(pila.isEnabled()==true){
+       pila.setSelected(false);
+        mapa.setEnabled(true);
+        tipo_sustraccion_cola=true;
+       }else{
+      cola.setSelected(true);
+       
+       }
+    }//GEN-LAST:event_colaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -381,8 +616,12 @@ int contador_castillo=1;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField bloque_contador;
+    private javax.swing.JTextField castillo_contador;
+    private javax.swing.JRadioButton cola;
+    private javax.swing.JTextField ficha_contador;
+    private javax.swing.JTextField goomba_contador;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -392,7 +631,16 @@ int contador_castillo=1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -401,5 +649,10 @@ int contador_castillo=1;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField koopa_contador;
+    private javax.swing.JButton mapa;
+    private javax.swing.JTextField mario_contador;
+    private javax.swing.JTextField pared_contador;
+    private javax.swing.JRadioButton pila;
     // End of variables declaration//GEN-END:variables
 }

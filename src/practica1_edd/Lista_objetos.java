@@ -5,6 +5,8 @@
  */
 package practica1_edd;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Gary ortiz
@@ -62,6 +64,22 @@ public class Lista_objetos {
     
     }
     }
+    // recuperar primero
+    public Objeto_juego obtenerprimero(){
+    if(pnodo==null){
+    return null;
+    }else{
+    return pnodo.objeto;
+    }
+    }
+    // recuperar ultimo
+    public Objeto_juego obtenerultimo(){
+    if(unodo==null){
+    return null;
+    }else{
+    return unodo.objeto;
+    }
+    }
      //extraccion del elemento alfinal de la lista
     public Objeto_juego extraeralfinal(){
     try{
@@ -80,12 +98,21 @@ public class Lista_objetos {
     }
     }
     
-    public void imprimirlista(){
+    public ArrayList imprimirlista(){
+  ArrayList<String> List = new ArrayList<String>();
     NodoL aux= this.pnodo;
     while(aux!=null){
-    System.out.println(aux.getinfo().nombre);
+      
+//    System.out.println(aux.getinfo().Url);
+   List.add(aux.getinfo().Url);
     aux=aux.getsiguiente();
     }
+    return List;
+    }
+    
+    public int gettamaño(){
+    
+    return 0;
     }
     public boolean buscar(Objeto_juego obj){
         NodoL aux=this.pnodo;
