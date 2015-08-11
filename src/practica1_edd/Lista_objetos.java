@@ -97,7 +97,7 @@ public class Lista_objetos {
     
     }
     }
-    
+  public static ArrayList<String> obj = new ArrayList<String>(); 
     public ArrayList imprimirlista(){
   ArrayList<String> List = new ArrayList<String>();
     NodoL aux= this.pnodo;
@@ -105,11 +105,33 @@ public class Lista_objetos {
       
 //    System.out.println(aux.getinfo().Url);
    List.add(aux.getinfo().Url);
+   obj.add(aux.getinfo().nombre);
     aux=aux.getsiguiente();
     }
     return List;
     }
+    public StringBuilder diag(){
     
+     StringBuilder grafica = new StringBuilder();
+    NodoL aux= this.unodo;
+    while(aux!=null){
+        grafica.append(" ");
+    
+
+   if(aux.anterior!=null){
+       grafica.append(aux.objeto.nombre);
+          grafica.append("->");
+   grafica.append(aux.anterior.objeto.nombre);
+   grafica.append(";");
+   }
+   
+    aux=aux.getanterior();
+    
+    }
+    return grafica;
+    
+    
+    }
     public int gettamaño(){
     
     return 0;

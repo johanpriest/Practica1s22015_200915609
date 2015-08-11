@@ -198,7 +198,7 @@ public class Matriz {
                     tmp.setSiguienteCol(nuevo);
                     if ( nuevo.getSiguienteCol()!=null) //enlaza con siguiente de la lista
                         nuevo.getSiguienteCol().setAnteriorCol(nuevo);
-                    //conexion entre el nuevo nodo y sus filas colindantes
+                    //conexion entre el nuevo nodo y sus filas siguientes
                     tmp = buscarFilaAnterior(x,y); // busca nodo anterior recorriendo la columna
                     nuevo.setAnteriorRow(tmp);
                     nuevo.setSiguienteRow(tmp.siguienteRow);
@@ -321,5 +321,68 @@ public class Matriz {
         inicio.setSiguienteRow(null);
     }
     
+    public StringBuilder impirmirMatriz(int x, int y){
+    StringBuilder temp=new StringBuilder();
+  Nodo nuevo=null;
+  
+  for(int k=1;k<=x;k++){
+        for(int l=1;l<=y;l++){
+           nuevo=irAlNodo(l, k);
+          
+            
+                   temp.append(nuevo.info.nombre+"_"+k+"_"+l+"[shape=box];");
+              
+                   
+                 
+               
+            }
+        
+            }
+             
+  
+  
+  
+  
+    for(int k=1;k<=x;k++){
+        for(int l=1;l<=y;l++){
+           nuevo=irAlNodo(l, k);
+          
+            if(nuevo.siguienteCol!=null){
+               if(l==y){
+                  
+               }else{
+                   temp.append(nuevo.info.nombre+"_"+k+"_"+l);
+              
+                    temp.append("->");
+                    temp.append(nuevo.siguienteCol.info.nombre+"_"+k+"_"+(l+1));
+                    temp.append(";");
+                 
+               }
+            }
+           if(nuevo.siguienteRow!=null){
+               if(k==x){
+                
+               }else{
+                   temp.append(nuevo.info.nombre+"_"+k+"_"+l);
+              
+                    temp.append("->");
+                    temp.append(nuevo.siguienteRow.info.nombre+"_"+(k+1)+"_"+l);
+                    temp.append(";");
+                 
+               }
+            }
+             
+            
+            
+            
+            
+            
+       
+            }
+        
+     
+     }
     
+    return temp;
+    }
 }

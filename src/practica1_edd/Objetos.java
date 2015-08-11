@@ -6,10 +6,13 @@
 package practica1_edd;
 
 import java.awt.Image;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -511,7 +514,11 @@ int contador_mario=1;
                      mario_contador.setText(Integer.toString(contador_mario_objeto));
         
                     }else{
-                     System.out.println("SOLO PUEDE EXISTIR UN HEROE POR EL JUEGO");
+                    
+                      JOptionPane.showMessageDialog(null,
+    "SOLO PUEDE EXISTIR UN HEROE POR EL JUEGO",
+    "ERROR!!!",
+    JOptionPane.ERROR_MESSAGE);
                         } 
        }
     }//GEN-LAST:event_jButton7ActionPerformed
@@ -525,14 +532,18 @@ int contador_castillo=1;
            castillo_contador.setText(Integer.toString(contador_castillo_objeto));
         
        }else{
-       System.out.println("SOLO PUEDE EXISTIR UN CASTILLO POR EL JUEGO");
+      
+           JOptionPane.showMessageDialog(null,
+    "SOLO PUEDE EXISTIR UN CASTILLO POR EL JUEGO",
+    "ERROR!!!",
+    JOptionPane.ERROR_MESSAGE);
        }
     }//GEN-LAST:event_jButton8ActionPerformed
 
     
  
     private void mapaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mapaActionPerformed
-//lista.imprimirlista();
+lista.imprimirlista();
          list.add(Integer.parseInt(pared_contador.getText()));
          list.add(Integer.parseInt(bloque_contador.getText()));
          list.add(Integer.parseInt(goomba_contador.getText()));
@@ -540,20 +551,86 @@ int contador_castillo=1;
          list.add(Integer.parseInt(ficha_contador.getText()));
          list.add(Integer.parseInt(mario_contador.getText()));
          list.add(Integer.parseInt(castillo_contador.getText()));
-Matriz m=new Matriz();
-Objeto_juego obj=new Objeto_juego("vacio1", "vacio");
-for(int i=1;i<=5;i++){
-    for(int j=1;j<=3;j++){
-    m.insertar(obj, i, j);
-    Matriz.Nodo buscarFilaAnterior = m.irAlNodo(i, j);
-        String dato = buscarFilaAnterior.getdato();
-        System.out.println(dato+" pos x: "+i+" pos y:"+j);
-    }
-}
+
 
 pantalla_juego pantalla=new pantalla_juego();
 pantalla.setVisible(true);
+
+StringBuilder str=new StringBuilder();
+str.append("digraph G\n" + 
+        "{");
+str.append("label=\"LISTA DOBLE\";");
+
+ArrayList ar=Lista_objetos.obj;
+for(int i=0;i<ar.size();i++){
+str.append(ar.get(i));
+if(i!=ar.size()-1){
+str.append("->");
+}
+
+}
+
+
+str.append(";");
+str.append(lista.diag());
+
+
+
+str.append("}");
+///creacion del archivo para la imagen de la lista doble
+FileWriter fichero = null;
+        PrintWriter pw = null;
+        try
+        {
+            fichero = new FileWriter("C:\\Users\\garyjoan\\Desktop\\listadoble.txt");
+            pw = new PrintWriter(fichero);
+ 
+           pw.append(str);
+ 
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+           try {
+           // Nuevamente aprovechamos el finally para 
+           // asegurarnos que se cierra el fichero.
+           if (null != fichero)
+              fichero.close();
+           } catch (Exception e2) {
+              e2.printStackTrace();
+           }
+
+
+
+
+
+  try {
+      
+      String dotPath = "C:\\Program Files (x86)\\graphviz\\bin\\dot.exe";
+      
+      String fileInputPath = "C:\\Users\\garyjoan\\Desktop\\listadoble.txt";
+      String fileOutputPath = "C:\\Users\\garyjoan\\Desktop\\listadoble.jpg";
+      
+      String tParam = "-Tjpg";
+      String tOParam = "-o";
         
+      String[] cmd = new String[5];
+      cmd[0] = dotPath;
+      cmd[1] = tParam;
+      cmd[2] = fileInputPath;
+      cmd[3] = tOParam;
+      cmd[4] = fileOutputPath;
+                  
+      Runtime rt = Runtime.getRuntime();
+      
+      rt.exec( cmd );
+      
+    } catch (Exception ex) {
+      ex.printStackTrace();
+    } finally {
+    }
+        }
+
+
     }//GEN-LAST:event_mapaActionPerformed
 public static boolean tipo_sustraccion_pila;
 public static boolean tipo_sustraccion_cola;
